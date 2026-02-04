@@ -16,9 +16,15 @@ readonly UTIL_RED UTIL_GREEN UTIL_BLUE UTIL_NC
 util::log() {
     local msg="${1:-}"
     local color="${2:-$UTIL_BLUE}"
+    local with_prefix="${3:-true}"
 
     [[ -z "$msg" ]] && { printf '\n'; return; }
-    printf '%b>>> %s%b\n' "$color" "$msg" "$UTIL_NC"
+
+    if [[ "$with_prefix" == "false" ]]; then
+        printf '%b%s%b\n' "$color" "$msg" "$UTIL_NC"
+    else
+        printf '%b>>> %s%b\n' "$color" "$msg" "$UTIL_NC"
+    fi
 }
 
 util::confirm() {

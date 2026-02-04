@@ -52,7 +52,7 @@ source "$ROOT_DIR/bash-utils/common/utils.sh"
 
 ### 1. log
 ```bash
-util::log MESSAGE [COLOR]
+util::log MESSAGE [COLOR] [PREFIX=true]
 ```
 
 Print formatted log output.
@@ -61,6 +61,16 @@ Print formatted log output.
 util::log "Starting script"
 util::log "Success" "$UTIL_GREEN"
 util::log "Error" "$UTIL_RED"
+util::log "Message without prefix" "$UTIL_BLUE" false
+```
+
+OUTPUT:
+
+```bash
+>>> Starting script
+>>> Success
+>>> Error
+Message without prefix
 ```
 
 ---
