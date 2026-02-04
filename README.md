@@ -32,7 +32,7 @@ bash-utils/
 ### 1. Add as submodule
 
 ```bash
-git submodule add git@github.com:YOUR_USERNAME/bash-utils.git common/bash-utils
+git submodule add git@github.com:AlauddinTheWonder/bash-utils.git
 git submodule update --init --recursive
 ```
 
@@ -42,7 +42,7 @@ git submodule update --init --recursive
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 export ROOT_DIR
 
-source "$ROOT_DIR/common/bash-utils/common/utils.sh"
+source "$ROOT_DIR/bash-utils/common/utils.sh"
 ```
 
 ---
