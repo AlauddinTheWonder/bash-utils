@@ -92,6 +92,9 @@ git::pullAll() {
                 git add .
                 git commit -m "$commit_msg"
                 log "Changes committed" "$UTIL_GREEN"
+                log "Pushing changes..."
+                git push origin "$branch"
+                log "Changes are pushed to remote" "$UTIL_GREEN"
             else
                 log "Skipping pull to avoid conflicts" "$UTIL_RED"
                 cd "$base_dir"
