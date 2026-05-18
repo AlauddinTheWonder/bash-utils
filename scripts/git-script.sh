@@ -151,6 +151,7 @@ git::statusAll() {
         log "Branch: $branch" "$UTIL_GREEN"
 
         if [[ -n "$(git status --porcelain)" ]]; then
+            log "### Uncommitted changes detected ###" "$UTIL_RED"
             git status --short
         else
             log "Working tree clean" "$UTIL_GREEN"
@@ -187,12 +188,16 @@ read -r -p "Enter directory prefix (e.g. SIG-): " prefix
     prefix="SIG-"
 }
 
-echo
-read -n 1 -p "Enable interactive mode? [y/N]: " interactive_choice
+if [[ "$action" == "pull" ]]; then
+    echo
+    read -n 1 -p "Enable interactive mode? [y/N]: " interactive_choice
 
-interactive_flag=""
-if [[ "$interactive_choice" =~ ^[yY]$ ]]; then
-    interactive_flag="--interactive"
+    interactive_flag=""
+    if [[ "$interactive_choice" =~ ^[yY]$ ]]; then
+        interactive_flag="--interactive"
+    fi
+else
+    interactive_flag=""
 fi
 
 # ----------------------------------------------------------------------
